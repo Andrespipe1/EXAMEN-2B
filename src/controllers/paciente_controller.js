@@ -122,15 +122,15 @@ const perfilUsuario = (req,res) => {
     delete req.pacienteBDD.createdAt
     delete req.pacienteBDD.updatedAt
     delete req.pacienteBDD.__v
-    res.status(200).json(req.veterinarioBDD)
+    res.status(200).json(req.pacienteBDD)
 }
 
 const actualizarPassword = async (req,res)=>{
-    const pacienteBDD = await Veterinario.findById(req.veterinarioBDD._id)
-    if(!pacienteBDD) return res.status(404).json({msg:`Lo sentimos, no existe el veterinario ${id}`})
-    const verificarPassword = await veterinarioBDD.matchPassword(req.body.passwordactual)
+    const pacienteBDD = await Paciente.findById(req.pacienteBDD._id)
+    if(!pacienteBDD) return res.status(404).json({msg:`Lo sentimos, no existe el usuario ${id}`})
+    const verificarPassword = await pacienteBDD.matchPassword(req.body.passwordactual)
     if(!verificarPassword) return res.status(404).json({msg:"Lo sentimos, el password actual no es el correcto"})
-        pacienteBDD.password = await veterinarioBDD.encrypPassword(req.body.passwordnuevo)
+        pacienteBDD.password = await pacienteBDD.encrypPassword(req.body.passwordnuevo)
     await pacienteBDD.save()
     res.status(200).json({msg:"Password actualizado correctamente"})
 }
@@ -139,22 +139,22 @@ const actualizarPerfil = async (req,res)=>{
     const {id} = req.params
     if( !mongoose.Types.ObjectId.isValid(id) ) return res.status(404).json({msg:`Lo sentimos, debe ser un id válido`});
     if (Object.values(req.body).includes("")) return res.status(400).json({msg:"Lo sentimos, debes llenar todos los campos"})
-    const pacienteBDD = await Veterinario.findById(id)
-    if(!pacienteBDD) return res.status(404).json({msg:`Lo sentimos, no existe el veterinario ${id}`})
+    const pacienteBDD = await Paciente.findById(id)
+    if(!pacienteBDD) return res.status(404).json({msg:`Lo sentimos, no existe el usuario ${id}`})
     if (pacienteBDD.email !=  req.body.email)
     {
-        const pacienteBDDMail = await Veterinario.findOne({email:req.body.email})
+        const pacienteBDDMail = await Paciente.findOne({email:req.body.email})
         if (pacienteBDDMail)
         {
             return res.status(404).json({msg:`Lo sentimos, el existe ya se encuentra registrado`})  
         }
     }
-		veterinarioBDD.nombre = req.body.nombre || veterinarioBDD?.nombre
-    veterinarioBDD.apellido = req.body.apellido  || veterinarioBDD?.apellido
-    veterinarioBDD.direccion = req.body.direccion ||  veterinarioBDD?.direccion
-    veterinarioBDD.telefono = req.body.telefono || veterinarioBDD?.telefono
-    veterinarioBDD.email = req.body.email || veterinarioBDD?.email
-    await veterinarioBDD.save()
+		pacienteBDD.nombre = req.body.nombre || pacienteBDD?.nombre
+    pacienteBDD.apellido = req.body.apellido  || pacienteBDD?.apellido
+    pacienteBDD.direccion = req.body.direccion ||  pacienteBDD?.direccion
+    pacienteBDD.telefono = req.body.telefono || pacienteBDD?.telefono
+    pacienteBDD.email = req.body.email || pacienteBDD?.email
+    await pacienteBDD.save()
     res.status(200).json({msg:"Perfil actualizado correctamente"})
 }
 

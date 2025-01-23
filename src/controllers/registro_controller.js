@@ -1,6 +1,6 @@
 import { Registro } from '../models/Registro.js';
 
-export const obtenerRegistrosPorPaciente = async (req, res) => {
+const obtenerRegistrosPorPaciente = async (req, res) => {
   try {
     const { pacienteId } = req.params;
 
@@ -18,7 +18,7 @@ export const obtenerRegistrosPorPaciente = async (req, res) => {
   }
 };
 
-export const registrarDatosDiarios = async (req, res) => {
+const registrarDatosDiarios = async (req, res) => {
   const { pacienteId } = req.params;
   const { peso, estatura, nivelActividadFisica, horasDeSueño, nivelEstres } = req.body;
 
@@ -61,3 +61,65 @@ export const registrarDatosDiarios = async (req, res) => {
     });
   }
 };
+
+const actualizarRegistro = async (req, res) => {
+  const { registroId } = req.params;
+  const { peso, estatura, nivelActividadFisica, horasDeSueño, nivelEstres } = req.body;
+
+  try {
+    // Buscar el registro por ID
+    const registroExistente = await Registro.findById(registroId);
+    
+    if (!registroExistente) {
+      return res.status(404).json({ msg: 'Registro no encontrado' });
+    }
+
+    // Actualizar el registro con los nuevos valores
+    registroExistente.peso = peso || registroExistente.peso;
+    registroExistente.estatura = estatura || registroExistente.estatura;
+    registroExistente.nivelActividadFisica = nivelActividadFisica || registroExistente.nivelActividadFisica;
+    registroExistente.horasDeSueño = horasDeSueño || registroExistente.horasDeSueño;
+    registroExistente.nivelEstres = nivelEstres || registroExistente.nivelEstres;
+
+    await registroExistente.save();
+
+    return res.status(200).json({
+      msg: 'Registro actualizado correctamente',
+      registro: registroExistente,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      msg: 'Error al actualizar el registro',
+    });
+  }
+};
+
+const eliminarRegistro = async (req, res) => {
+  const { registroId } = req.params;
+
+  try {
+    const registroExistente = await Registro.findById(registroId);
+    if (!registroExistente) {
+      return res.status(404).json({ msg: 'Registro no encontrado' });
+    }
+    await Registro.findByIdAndDelete(registroId);
+    return res.status(200).json({
+      msg: 'Registro eliminado correctamente',
+    });
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      msg: 'Error al eliminar el registro',
+    });
+  }
+}
+
+
+export{
+    obtenerRegistrosPorPaciente,
+    registrarDatosDiarios,
+    actualizarRegistro,
+    eliminarRegistro
+}
