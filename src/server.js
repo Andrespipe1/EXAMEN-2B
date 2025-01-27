@@ -21,7 +21,7 @@ app.use(express.json())
 
 // Rutas 
 app.get('/',(req,res)=>{
-    res.send("Server on")})
+    res.send("Server online ❤️‍🩹")})
 
 
 app.use('/api/',routerPaciente)
