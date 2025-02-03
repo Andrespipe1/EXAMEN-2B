@@ -1,5 +1,5 @@
 import express from 'express';
-import { actualizarRegistro, obtenerRegistrosPorPaciente, registrarDatosDiarios} from '../controllers/registro_controller.js';
+import { actualizarRegistro, obtenerRegistrosPorPaciente, registrarDatosDiarios, eliminarRegistro} from '../controllers/registro_controller.js';
 import { verificarAutenticacion } from '../helpers/crearJWT.js'
 
 const router = express.Router();
@@ -10,4 +10,6 @@ router.get('/:pacienteId', verificarAutenticacion,obtenerRegistrosPorPaciente);
 router.post('/:pacienteId', verificarAutenticacion,registrarDatosDiarios);
 
 router.put('/:pacienteId', verificarAutenticacion,actualizarRegistro);
+
+router.delete('/:registroId', verificarAutenticacion,eliminarRegistro);
 export default router;

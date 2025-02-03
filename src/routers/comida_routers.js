@@ -1,5 +1,5 @@
 import express from 'express';
-import { registrarComida, obtenerComidasPorPaciente, actualizarComida } from '../controllers/comida_controller.js';
+import { registrarComida, obtenerComidasPorPaciente, actualizarComida, eliminarComida } from '../controllers/comida_controller.js';
 import { verificarAutenticacion } from '../helpers/crearJWT.js';
 
 const router = express.Router();
@@ -12,5 +12,8 @@ router.post('/:pacienteId', verificarAutenticacion, registrarComida);
 
 // Ruta para actualizar una comida específica
 router.put('/:comidaId', verificarAutenticacion, actualizarComida);
+
+//Ruta para eliminar una comida
+router.delete('/:comidaId', verificarAutenticacion, eliminarComida);
 
 export default router;
