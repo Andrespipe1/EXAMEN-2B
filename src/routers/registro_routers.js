@@ -9,7 +9,7 @@ router.get('/:pacienteId', verificarAutenticacion,obtenerRegistrosPorPaciente);
 
 router.post('/:pacienteId', verificarAutenticacion,registrarDatosDiarios);
 
-router.put('/:pacienteId', verificarAutenticacion,actualizarRegistro);
+router.put('/:registroId', verificarAutenticacion,actualizarRegistro);
 
 router.delete('/:registroId', verificarAutenticacion,eliminarRegistro);
 export default router;

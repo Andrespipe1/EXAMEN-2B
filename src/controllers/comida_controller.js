@@ -23,6 +23,12 @@ const registrarComida = async (req, res) => {
             return res.status(400).json({ msg: "Todos los campos son obligatorios" });
         }
 
+        // Verificar si ya existe una comida de este tipo para el paciente
+        const comidaExistente = await Comida.findOne({ pacienteId, tipoComida });
+        if (comidaExistente) {
+            return res.status(400).json({ msg: `Ya tienes registrado un ${tipoComida}. No puedes agregar otro.` });
+        }
+
         const nuevaComida = new Comida({
             pacienteId,
             tipoComida,

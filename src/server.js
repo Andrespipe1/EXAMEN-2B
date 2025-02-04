@@ -28,7 +28,7 @@ app.get('/',(req,res)=>{
 
 app.use('/api/',routerPaciente)
 app.use('/api/registros',registroRoutes);
-app.use('/api/registro',comidaRouter);
+app.use('/api/comidas',comidaRouter);
 
 //Rutas no encontradas
 app.use((req,res)=>res.status(404).send("Endpoint no encontrado - 404"))
