@@ -39,22 +39,22 @@ npm install
 
 Crea un archivo .env en la raíz del proyecto y añade las siguientes configuraciones:
 
-# MongoDB
+ MongoDB
 MONGODB_URI_PRODUCTION=tu_uri_de_mongodb atlas
 
-# Configuración del servidor
+ Configuración del servidor
 PORT=3000
 
-# JWT
+ JWT
 JWT_SECRET=tu_clave_secreta
 
-# Credenciales de correo
+ Credenciales de correo
 HOST_MAILTRAP=  smtp.gmail.com
 PORT_MAILTRAP= 465
 USER_MAILTRAP= ejemplo@gmail.com
 PASS_MAILTRAP= tus credenciales
 
-# Url para uso local
+ Url para uso local
 URL_BACKEND=http://localhost:3000/api/
 
 
