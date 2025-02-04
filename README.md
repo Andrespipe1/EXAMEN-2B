@@ -48,11 +48,11 @@ PORT=3000
  JWT
 JWT_SECRET=tu_clave_secreta
 
- Credenciales de correo
-HOST_MAILTRAP=  smtp.gmail.com
-PORT_MAILTRAP= 465
-USER_MAILTRAP= ejemplo@gmail.com
-PASS_MAILTRAP= tus credenciales
+Credenciales de correo
+1. HOST_MAILTRAP=  smtp.gmail.com
+2. PORT_MAILTRAP= 465
+3. USER_MAILTRAP= ejemplo@gmail.com
+4. PASS_MAILTRAP= tus credenciales
 
  Url para uso local
 URL_BACKEND=http://localhost:3000/api/
