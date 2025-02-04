@@ -71,8 +71,8 @@ npm start
 
 El servidor estará disponible en http://localhost:3000 o en el puerto especificado en tu archivo .env.
 ## Estructura del proyecto
+![imagen](https://github.com/user-attachments/assets/c1b13128-1c7e-4ea6-a833-55c9c2e6b084)
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
 
 ## 📜 Autores
