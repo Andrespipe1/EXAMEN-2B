@@ -2,10 +2,9 @@
 
 SALUDIFY es un proyecto de backend construido con Node.js y Express, que proporciona una API RESTful para integrarse fácilmente con aplicaciones frontend. Utiliza MongoDB como sistema de gestión de bases de datos y está optimizado para entornos tanto de desarrollo como de producción.
 
-## 📌 Características
+## 🐱‍👤 Características
 
     Conexión con la base de datos MongoDB Atlas.
-    Gestión de rutas y middleware usando Express.
     Soporte para integraciones seguras a través de diferentes orígenes.
     Validación de datos utilizando express-validator.
     Autenticación y autorización con JSON Web Tokens (JWT).
@@ -16,11 +15,11 @@ SALUDIFY es un proyecto de backend construido con Node.js y Express, que proporc
 
 ## 🔑 Seguridad
 
-Este proyecto utiliza las siguientes medidas de seguridad:
+Este proyecto contiene las siguientes medidas de seguridad:
 
-    Cifrado de contraseñas con bcryptjs.
-    Generación y validación de tokens JWT para autenticar usuarios.
-    Validación de entradas con express-validator para prevenir ataques de inyección.
+    Cifrado de contraseñas.
+    Generación y validación de tokens JWT.
+    Validación de entradas con express-validator.
 
 
 
@@ -28,16 +27,16 @@ Este proyecto utiliza las siguientes medidas de seguridad:
 1. Clonar el repositorio
 
 2. Navegar al directorio del proyecto
+   
+    cd nombre carpeta
 
-cd saludify-backend
+4. Instalar las dependencias
 
-3. Instalar las dependencias
+    npm install
 
-npm install
+5. Configurar variables de entorno
 
-4. Configurar variables de entorno
-
-Crea un archivo .env en la raíz del proyecto y añade las siguientes configuraciones:
+Crea un archivo .env en la raíz del proyecto:
 
  MongoDB
 MONGODB_URI_PRODUCTION=tu_uri_de_mongodb atlas
