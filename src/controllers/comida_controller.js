@@ -4,7 +4,8 @@ import Comida from "../models/Comida.js";
 const obtenerComidasPorPaciente = async (req, res) => {
     try {
         const { pacienteId } = req.params;
-        const comidas = await Comida.find({ pacienteId });
+        // Excluir los campos innecesarios con `.select("-campo")`
+        const comidas = await Comida.find({ pacienteId }).select("-createdAt -updatedAt -__v");
 
         res.status(200).json({ comidas });
     } catch (error) {
@@ -12,6 +13,7 @@ const obtenerComidasPorPaciente = async (req, res) => {
         res.status(500).json({ msg: "Error al obtener las comidas" });
     }
 };
+
 
 // Guardar una nueva comida
 const registrarComida = async (req, res) => {
@@ -23,16 +25,27 @@ const registrarComida = async (req, res) => {
             return res.status(400).json({ msg: "Todos los campos son obligatorios" });
         }
 
-        // Verificar si ya existe una comida de este tipo para el paciente
-        const comidaExistente = await Comida.findOne({ pacienteId, tipoComida });
+        // Obtener la fecha actual sin la hora para comparar solo el día
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
+
+        // Verificar si ya existe una comida de este tipo para el paciente en la fecha actual
+        const comidaExistente = await Comida.findOne({
+            pacienteId,
+            tipoComida,
+            fecha: { $gte: hoy } // Busca comidas registradas hoy o después
+        });
+
         if (comidaExistente) {
-            return res.status(400).json({ msg: `Ya tienes registrado un ${tipoComida}. No puedes agregar otro.` });
+            return res.status(400).json({ msg: `Ya has registrado un ${tipoComida} hoy. No puedes agregar otro.` });
         }
 
+        // Crear la nueva comida con la fecha actual
         const nuevaComida = new Comida({
             pacienteId,
             tipoComida,
             descripcion,
+            fecha: hoy
         });
 
         await nuevaComida.save();
@@ -43,6 +56,7 @@ const registrarComida = async (req, res) => {
         res.status(500).json({ msg: "Error al registrar la comida" });
     }
 };
+
 
 // Actualizar una comida
 const actualizarComida = async (req, res) => {
