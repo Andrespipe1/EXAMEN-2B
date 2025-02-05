@@ -1,8 +1,8 @@
-## BACKEND SALUDIFY
+## BACKEND SALUDIFY ⚕️
 
 SALUDIFY es un proyecto de backend construido con Node.js y Express, que proporciona una API RESTful para integrarse fácilmente con aplicaciones frontend. Utiliza MongoDB como sistema de gestión de bases de datos y está optimizado para entornos tanto de desarrollo como de producción.
 
-📌 Características
+## 📌 Características
 
     Conexión con la base de datos MongoDB Atlas.
     Gestión de rutas y middleware usando Express.
@@ -14,7 +14,7 @@ SALUDIFY es un proyecto de backend construido con Node.js y Express, que proporc
 
 
 
-🛡️ Seguridad
+## 🔑 Seguridad
 
 Este proyecto utiliza las siguientes medidas de seguridad:
 
@@ -39,22 +39,22 @@ npm install
 
 Crea un archivo .env en la raíz del proyecto y añade las siguientes configuraciones:
 
-# MongoDB
+ MongoDB
 MONGODB_URI_PRODUCTION=tu_uri_de_mongodb atlas
 
-# Configuración del servidor
+ Configuración del servidor
 PORT=3000
 
-# JWT
+ JWT
 JWT_SECRET=tu_clave_secreta
 
-# Credenciales de correo
-HOST_MAILTRAP=  smtp.gmail.com
-PORT_MAILTRAP= 465
-USER_MAILTRAP= ejemplo@gmail.com
-PASS_MAILTRAP= tus credenciales
+Credenciales de correo
+1. HOST_MAILTRAP=  smtp.gmail.com
+2. PORT_MAILTRAP= 465
+3. USER_MAILTRAP= ejemplo@gmail.com
+4. PASS_MAILTRAP= tus credenciales
 
-# Url para uso local
+ Url para uso local
 URL_BACKEND=http://localhost:3000/api/
 
 
@@ -70,9 +70,9 @@ Modo producción:
 npm start
 
 El servidor estará disponible en http://localhost:3000 o en el puerto especificado en tu archivo .env.
-## Estructura del proyecto
+## 📳 Estructura del proyecto
+![imagen](https://github.com/user-attachments/assets/c1b13128-1c7e-4ea6-a833-55c9c2e6b084)
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
 
 ## 📜 Autores
