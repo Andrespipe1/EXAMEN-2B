@@ -20,7 +20,7 @@ router.post('/nuevo-password/:token',nuevoPassword)
 
 //Rutas Privadas
 router.get('/perfilpaciente',verificarAutenticacion,perfilUsuario)
-router.put('/veterinario/actualizarpassword',verificarAutenticacion,actualizarPassword)
-router.put('/veterinario/:id',verificarAutenticacion,actualizarPerfil)
+router.put('/paciente/actualizarpassword',verificarAutenticacion,actualizarPassword)
+router.put('/paciente/:id',verificarAutenticacion,actualizarPerfil)
 
 export default router
