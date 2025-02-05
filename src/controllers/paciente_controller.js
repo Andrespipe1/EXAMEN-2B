@@ -151,7 +151,6 @@ const actualizarPerfil = async (req,res)=>{
     }
 		pacienteBDD.nombre = req.body.nombre || pacienteBDD?.nombre
     pacienteBDD.apellido = req.body.apellido  || pacienteBDD?.apellido
-    pacienteBDD.direccion = req.body.direccion ||  pacienteBDD?.direccion
     pacienteBDD.telefono = req.body.telefono || pacienteBDD?.telefono
     pacienteBDD.email = req.body.email || pacienteBDD?.email
     await pacienteBDD.save()

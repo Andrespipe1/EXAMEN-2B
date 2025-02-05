@@ -23,7 +23,7 @@ app.use(express.json())
 
 // Rutas 
 app.get('/',(req,res)=>{
-    res.send("Server online 😜")})
+    res.send("Server online 🐱‍🏍")})
 
 
 app.use('/api/',routerPaciente)
