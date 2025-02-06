@@ -77,5 +77,4 @@ El servidor estará disponible en http://localhost:3000 o en el puerto especific
 ## 📜 Autores
 
 - Andrés Tufiño (Andrespipe1)
-- Wilmer Vargas (Wilmer-Vnr)
 
