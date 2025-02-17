@@ -55,9 +55,9 @@ const login = async (req, res) => {
     if (!verificarPassword) return res.status(400).json({ msg: "Lo sentimos el password no es el correcto" });
 
     // Paso 3: Interactuar con BDD
-    const tokenJWT = generarJWT(pacienteBDD._id, "paciente");
+    const token = generarJWT(pacienteBDD._id, "paciente");
 
-    res.status(200).json({ pacienteBDD, tokenJWT });
+    res.status(200).json({ pacienteBDD, token });
 }
 
 const recuperarPassword = async (req, res) => {
